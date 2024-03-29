@@ -1,16 +1,21 @@
+import{ AppLayout } from './components/ui/layouts'
+import { Home } from './pages'
+import { WagmiConfig } from "wagmi";
+import { ConnectKitProvider,ConnectKitButton } from "connectkit";
+import { config } from './config/wagmi'
+import { home } from './pages'
+
 function App() {
-    return ( 
-    <h1 className="text-3xl font-bold underline bg-orange-500">
-      Hello world!
-      <div className="bg-blue-300 flex justify-between">
-    
-        <div className="bg-red-200 w-fit"> soy el hijo</div>
-    
-        <div className="bg-red-500 w-fit"> soy el hijo</div>
-      </div>
-  </h1>
-  
-    )
+    return (
+      <WagmiConfig config={config}>
+      <ConnectKitProvider>
+      <AppLayout>
+        <Home />
+        <ConnectKitButton />
+      </AppLayout>
+      </ConnectKitProvider>
+    </WagmiConfig>
+  )
 }
 
 export default App
